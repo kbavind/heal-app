@@ -1,0 +1,18 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab()">
+  <ion-tab-bar slot="botton">
+    <ion-tab-button tab="home">
+      <ion-icon [name]="selectedTab == 'home' ? 'home' :  'home-outline'"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="facility">
+      <ion-icon [name]="selectedTab == 'facility' ? 'business' : 'business-outline'"></ion-icon>
+      <ion-label>Health Facilities</ion-label>
+    </ion-tab-button>
+  
+    <ion-tab-button tab="account">
+      <ion-icon [name]="selectedTab == 'account' ? 'menu' : 'menu-outline'"></ion-icon>
+      <ion-label>Settings</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

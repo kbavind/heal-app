@@ -1,0 +1,32 @@
+ion-content {
+    --background: #E96969;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+
+    .welcome-text {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    img {
+        max-width: 300px;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.welcButton {
+    --background: #E96969;
+    color: #fff;
+  }

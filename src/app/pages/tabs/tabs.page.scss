@@ -1,0 +1,17 @@
+ion-header {
+    ion-toolbar {
+        --padding-start: 10px;
+        ion-title {
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            max-width: 40vh;
+            text-shadow: 1px 1px 1px var(--ion-color-medium);
+            ion-label {
+                ion-icon {
+                    padding: 0 5px;
+                    transform: translateY(20%);
+                }
+            }
+        }
+    }
+}

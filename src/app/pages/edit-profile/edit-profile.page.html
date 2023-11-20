@@ -1,0 +1,135 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-title mode="md">
+      <ion-label>
+        <ion-text color="white">Edit Profile</ion-text>
+      </ion-label>
+    </ion-title>
+    <ion-button  slot="end" >
+      <ion-button (click)="backToAccount()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-button>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-icon slot="icon-only" name="arrow-back-outline" (click)="backToAccount()"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="md">
+      <ion-label>
+        <ion-text color="white">Edit Profile</ion-text>
+      </ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-list>
+
+      <ion-item lines="none">
+        <img mode="md" [src]="'assets/imgs/profileImg.png'" />
+      </ion-item>
+
+      <!-- <div class="profile-info">
+        <ion-item>
+          <ion-label position="floating">Username</ion-label>
+          <ion-input></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">New Password</ion-label>
+          <ion-icon [name]="type ? 'eye' : 'eye-off'" slot="end" color="dark" (click)="changeType()">
+          </ion-icon>
+          <ion-input [type]="type ? 'password' : 'text'" placeholder="Enter password"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Old Password</ion-label>
+          <ion-icon [name]="type ? 'eye' : 'eye-off'" slot="end" color="dark" (click)="changeType()">
+          </ion-icon>
+          <ion-input placeholder="Enter password"></ion-input>
+        </ion-item>
+
+        <ion-button fill="solid" expand="block" color="dark" (click)="updateDetails()">Save</ion-button>
+      </div> -->
+
+      <form class="ion-margin"> 
+        <div class="ion-margin-vertical">
+          <ion-item lines="full">
+            <ion-input type="text" placeholder="Enter new username"></ion-input>
+          </ion-item>
+          <ion-text  
+            color="danger" 
+            *ngIf="!form.get('username').valid && form.get('username').touched">
+            <ion-text
+              class="error" 
+              *ngIf="form.get('username').hasError('required')">
+              * Please enter new username
+            </ion-text>
+          </ion-text>
+        </div>
+        <div class="ion-margin-vertical">
+          <ion-item lines="full">
+            <ion-icon 
+              [name]="type ? 'eye' : 'eye-off'" 
+              slot="end" 
+              color="dark" 
+              (click)="changeType()">
+            </ion-icon>
+            <ion-input [type]="type ? 'password' : 'text'" 
+              placeholder="Enter new password"></ion-input>
+          </ion-item>
+          <ion-text 
+            color="danger" 
+            *ngIf="!form.get('password').valid && form.get('password').touched">
+            <ion-text
+              class="error"  
+              *ngIf="form.get('password').hasError('required')">
+              * Please enter your new password
+            </ion-text>
+            <ion-text
+              class="error"  
+              *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength')">
+              * Please enter a password of atleast 8 characters long
+            </ion-text>
+          </ion-text>
+        </div>
+        <div class="ion-margin-vertical">
+          <ion-item lines="full">
+            <ion-icon 
+              [name]="type ? 'eye' : 'eye-off'" 
+              slot="end" 
+              color="dark" 
+              (click)="changeType()">
+            </ion-icon>
+            <ion-input [type]="type ? 'password' : 'text'" 
+              placeholder="Re-enter new password"></ion-input>
+          </ion-item>
+          <ion-text 
+            color="danger" 
+            *ngIf="!form.get('password').valid && form.get('password').touched">
+            <ion-text
+              class="error"  
+              *ngIf="form.get('password').hasError('required')">
+              * Please re-enter your new password
+            </ion-text>
+            <ion-text
+              class="error"  
+              *ngIf="!form.get('password').hasError('required') && form.get('password').hasError('minlength')">
+              * Please enter a password of atleast 8 characters long
+            </ion-text>
+          </ion-text>
+        </div>
+      </form>
+
+      <ion-button fill="solid" expand="block" color="dark" (click)="updateDetails()">Save</ion-button>
+
+    </ion-list>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,35 @@
+// ion-header {
+
+// }
+
+ion-content {
+    ion-grid {
+        margin: 2vh 10px 0 5px;
+        ion-row {
+            ion-col {
+                padding: 0 !important;
+                ion-card {
+                    border: 0.001vh solid var(--ion-color-medium);
+                    height: 100px;
+                    width: 100%;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #E96969;
+                    ion-label {
+                        font-size: 0.7rem;
+                        font-weight: 600;
+                        margin-top: 5px;
+                    }
+                    ion-thumbnail {
+                        height: 7vh;
+                    }
+                }
+            }
+        }
+    }
+}
+

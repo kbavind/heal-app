@@ -1,0 +1,35 @@
+
+  <ion-item lines="none">
+    <ion-thumbnail slot="start">
+      <img src="assets/imgs/healthFacility.png" />
+    </ion-thumbnail>
+    <ion-label class="ion-text-wrap">
+      <ion-row>
+        <ion-text>
+          <strong>{{facility?.name}}</strong>
+        </ion-text>
+      </ion-row>
+      <ion-row>
+        <p>
+          <ion-text color="medium">
+            {{getCategories(facility?.categories)}}
+          </ion-text>
+        </p>
+      </ion-row>
+      <ion-row class="ion-text-left">
+        <ion-col size="12">
+          <ion-text class="ion-text-wrap">{{facility?.location}}</ion-text>
+        
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <p *ngIf="facility?.coordinate">
+          <ion-icon name="location-outline" (click)="OpenNavigator(facility?.coordinate)"> </ion-icon>
+        </p>
+        <p>
+          <ion-icon name="share-outline"> </ion-icon>
+        </p>
+      </ion-row>
+      
+    </ion-label>
+  </ion-item>

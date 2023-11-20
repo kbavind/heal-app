@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-icon slot="icon-only" name="arrow-back-outline" (click)="backToHome()"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="md">
+      <ion-label>
+        <ion-text color="white">Health Records</ion-text>
+      </ion-label>
+    </ion-title>
+    <!-- <ion-button  slot="end" >
+      <ion-button (click)="backToHome()">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-button> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <ion-card>
+    <ion-list>
+
+      <ion-item lines="none">
+        <ion-thumbnail >
+          <img [src]="'assets/imgs/height.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Weight (kg)</ion-label>
+        <ion-input type="number" [(ngModel)]="weight"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/weight.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Height (cm)</ion-label>
+        <ion-input type="number" [(ngModel)]="height"></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </ion-card>
+  <div class="ion-margin-horizontal">
+    <ion-button
+     class="ion-margin-horizontal"
+      size="small" 
+      expand="block" 
+      shape="round" 
+      color="secondary"
+      (click)="calculateBMI()">
+      <ion-text>Calculate</ion-text>
+    </ion-button>
+  </div>
+  
+  <ion-card *ngIf="bmiValue">
+    <ion-card-header>
+      BMI Calculation
+    </ion-card-header>
+    <ion-card-content>
+      <p>Weight {{this.weight}} kg, Height {{this.height}} cm</p>
+      <p>BMI: {{bmiValue}}</p>
+      <p><strong>You are {{bmiMessage}}</strong></p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-item lines="none">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/steps-count.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Steps Count</ion-label>
+        <ion-input type="number" [(ngModel)]="stepCount"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/distance-travel.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Distance Travelled (km)</ion-label>
+        <ion-input type="number" [(ngModel)]="distanceTravelled"></ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  
+</ion-content>

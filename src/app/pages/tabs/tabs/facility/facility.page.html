@@ -1,0 +1,128 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title mode="md" class="ion-no-padding">
+      <ion-label>
+        <ion-text color="medium">NOW</ion-text>
+        <ion-icon name="arrow-forward-outline" color="medium"></ion-icon>
+        <ion-text><strong>{{loc}}</strong></ion-text>
+      </ion-label>
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-toolbar>
+    <ion-searchbar 
+    [animated]="true" 
+    debounce="400" 
+    #searchInput 
+    placeholder="Search"
+    show-clear-button="focus"
+    (ionChange)="onSearchChange($event)"></ion-searchbar>
+  </ion-toolbar>
+
+  <ng-container *ngIf="facilities?.length > 0">
+    <ion-list>
+      <ion-item *ngFor="let facility of facilities" class="ion-margin-top">
+        <ion-thumbnail slot="start">
+          <img src="assets/imgs/shop.png"/>
+        </ion-thumbnail>
+        <ion-label>
+          <ion-text>{{ facility?.name }}</ion-text>
+          <p *ngIf="facility?.categories">
+            <ion-text>
+              {{getCategories(facility?.categories)}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-text>
+              {{facility?.location}}
+            </ion-text>
+          </p>
+          <p>
+            <ion-icon name="location-outline" (click)="OpenNavigator(facility?.coordinate)"></ion-icon>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content> -->
+
+<ion-header [class]="searchBar ? '' : 'ion-no-border'">
+  
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" *ngIf="searchBar">
+      <ion-icon slot="icon-only" name="arrow-back-outline" (click)="toggleSearch(1)"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" *ngIf="searchBar">
+      <ion-button (click)="toggleSearch(1)">
+        <ion-icon slot="icon-only" name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    
+    <ion-title *ngIf="searchBar" (click)="toggleSearch()">{{query}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+<!-- [color]="searchBar ? 'light' : ''"  -->
+
+  <ion-grid class="ion-padding-horizontal" *ngIf="!searchBar" >
+
+    <ion-row class="ion-align-items-center">
+      
+      <ion-searchbar 
+      [(ngModel)]="query" 
+      [animated]="true" 
+      type="text"  
+      #searchInput 
+      placeholder="Search"
+      clearInput
+      (ionChange)="onInputQuery()"></ion-searchbar>
+      
+      <ion-button 
+        size="small" 
+        
+        shape="round" 
+        color="dark" 
+        *ngIf="searchBtn" 
+        (click)="updateSearch()">
+        Search
+      </ion-button>
+
+    </ion-row>
+
+    <ion-row class="ion-align-items-center ion-margin-top">
+      <ion-col size="12">
+        <ion-label>Categories</ion-label>
+      </ion-col>
+      <ion-col size="6" *ngFor="let category of types" class="ion-text-center">
+        <ion-card
+          (click)="updateSearch(category?.name)">
+          <ion-card-header>
+            <ion-card-title color="white">{{category?.name}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+  <ion-list *ngIf="!isLoading && searchBar && facilities?.length > 0">
+    <ion-item-group *ngFor="let facility of facilities">
+      <app-facility [facility]="facility"></app-facility>
+    </ion-item-group>
+  </ion-list>
+
+  <app-empty-screen 
+  *ngIf="!isLoading && searchBar && facilities?.length == 0">
+  </app-empty-screen>
+
+  <div align="center" class="transformCenter">
+    <ion-spinner color="primary" *ngIf="searchBar && isLoading"></ion-spinner>
+  </div>
+
+</ion-content>

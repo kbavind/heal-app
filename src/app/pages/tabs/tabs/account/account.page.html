@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title mode="md">
+      <ion-label>
+        <ion-text color="white">Settings</ion-text>
+      </ion-label>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light">
+
+  <ion-card>
+    <ion-list>
+
+      <ion-item lines="true">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/profile.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Profile</ion-label>
+        <ion-icon (click)="goToEdit()" slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-item>
+
+      <!-- <ion-item lines="none">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/password.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Change Password</ion-label>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-item> -->
+
+      <ion-item lines="true">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/helpdesk.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Helpdesk</ion-label>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="true">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/privacy.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Privacy Policy</ion-label>
+        <ion-icon slot="end" name="arrow-forward-outline"></ion-icon>
+      </ion-item>
+
+      <ion-item lines="true" style="margin-bottom: 100%;">
+        <ion-thumbnail>
+          <img [src]="'assets/imgs/logout.png'" />
+        </ion-thumbnail>
+        <ion-label floating>Logout</ion-label>
+        <ion-icon slot="end" id="present-alert" name="arrow-forward-outline"></ion-icon>
+        <ion-alert trigger="present-alert" header="Are you sure you want to Logout?" [buttons]="alertButtons"
+          (didDismiss)="setResult($event)"></ion-alert>
+      </ion-item>
+
+      <!-- <ion-item style="margin-bottom: 100%;"></ion-item> -->
+
+    </ion-list>
+  </ion-card>
+</ion-content>
